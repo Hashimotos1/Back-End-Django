@@ -12,7 +12,7 @@ class User(models.Model):
 	weight = models.FloatField()
 
 #create Medication class model to map to the Medication database table
-class Medication(models.Model)
+class Medication(models.Model):
 	med_name = models.CharField('medication name', max_length = 25, primary_key=True)
 	med_dose_num = models.FloatField('dosage amount')
 	med_dose_unit = models.CharField('dosage unit', max_length = 15)
@@ -22,7 +22,7 @@ class Medication(models.Model)
 	med_timing = models.TimeField('timing')
 
 #Create Reminder class model to map to the Reminder database table
-class Reminder(models.Model)
+class Reminder(models.Model):
 	med_name = models.ForeignKey(Medication)
 	med_dose_num = models.ForeignKey(Medication)
 	med_dose_unit = models.ForeignKey(Medication)
