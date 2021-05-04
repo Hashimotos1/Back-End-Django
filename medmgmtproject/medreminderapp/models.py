@@ -14,15 +14,13 @@ class User(models.Model):
 #create Medication class model to map to the Medication database table
 class Medication(models.Model):
 	med_name = models.CharField('medication name', max_length = 25, primary_key=True)
-	med_dose_num = models.FloatField('dosage amount')
-	med_dose_unit = models.CharField('dosage unit', max_length = 15)
-	med_freq_num = models.FloatField('how often')
-	med_freq_unit = models.CharField('frequency', max_length =15)
+	med_dose = models.CharField('dosage', max_length = 15)
+	med_freq = models.CharField('frequency', max_length =15)
 	med_route = models.CharField('route', max_length = 25)
 	med_timing = models.TimeField('timing')
 
 #Create Reminder class model to map to the Reminder database table
 class Reminder(models.Model):
 	med_name = models.ForeignKey(Medication, on_delete=models.CASCADE)
-	reminder_time = models.DataTimeField()
-	reminder_note = models.CharField(max_length=255, primary_key =True)
+	reminder_time = models.DateTimeField()
+	reminder_note = models.CharField(max_length=255)
