@@ -3,5 +3,12 @@
 {% block body %}
 <div class="container">
     <h3>My Medications</h3>
+    
+    <form action="/medication form/" method="post">
+	    {% csrf_token %}
+	    {{ form.as_ul }}
+	    <input type="submit" value="Submit">
+	</form>
+
 </div>
 {% endblock %}
