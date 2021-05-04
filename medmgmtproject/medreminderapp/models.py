@@ -23,9 +23,6 @@ class Medication(models.Model):
 
 #Create Reminder class model to map to the Reminder database table
 class Reminder(models.Model):
-	med_name = models.ForeignKey(Medication)
-	med_dose_num = models.ForeignKey(Medication)
-	med_dose_unit = models.ForeignKey(Medication)
-	med_route = models.ForeignKey(Medication)
+	med_name = models.ForeignKey(Medication, on_delete=models.CASCADE)
 	reminder_time = models.DataTimeField()
 	reminder_note = models.CharField(max_length=255, primary_key =True)
