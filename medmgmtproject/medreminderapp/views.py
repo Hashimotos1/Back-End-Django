@@ -5,6 +5,10 @@ from django.forms import ModelForm
 from .forms import MedForm
 from .models import Medication
 
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+
 
 def index(request):
     return HttpResponse("Hello, world. You're at the medreminderapp index.")
@@ -45,3 +49,9 @@ def history_handler(request):
 
 def login_handler(request):
     return render(request, 'login.html')
+    
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
