@@ -3,12 +3,38 @@
 {% block body %}
 <div class="container">
     <h3>My Medications</h3>
-    
-    <form action="/medication form/" method="post">
-	    {% csrf_token %}
-	    {{ form.as_ul }}
-	    <input type="submit" value="Submit">
-	</form>
-
+    <ul class="messages">
+        {% for msg in messages %}
+        <li>
+            <div class="alert alert-{{msg.level_tag}}" role="alert">
+                {{ msg.message }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'Add Medication' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="med_name" class="form-label">Medication Name</label>
+            {{form.med_name}}
+        </div>
+        <div class="mb-3">
+            <label for="med_dose" class="form-label">Medication Dose</label>
+            {{form.med_dose}}
+        </div>
+        <div class="mb-3">
+            <label for="med_freq" class="form-label">Medication Frequency</label>
+            {{form.med_freq}}
+        </div>
+        <div class="mb-3">
+            <label for="med_route" class="form-label">Medication Route</label>
+            {{form.med_route}}
+        </div>
+        <div class="mb-3">
+            <label for="med_timing" class="form-label">Medication Timing</label>
+            {{form.med_timing}}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 {% endblock %}

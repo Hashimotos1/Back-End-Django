@@ -3,5 +3,30 @@
 {% block body %}
 <div class="container">
     <h3>My Reminders</h3>
+    <ul class="messages">
+        {% for msg in messages %}
+        <li>
+            <div class="alert alert-{{msg.level_tag}}" role="alert">
+                {{ msg.message }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'Add Reminder' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="med_name" class="form-label">Medication Name</label>
+            {{form.med_name}}
+        </div>
+        <div class="mb-3">
+            <label for="reminder_time" class="form-label">Reminder Time</label>
+            {{form.reminder_time}}
+        </div>
+        <div class="mb-3">
+            <label for="reminder_note" class="form-label">Reminder Note</label>
+            {{form.reminder_note}}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 {% endblock %}
